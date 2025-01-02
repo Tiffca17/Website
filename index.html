@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/e25e8fb234.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+<link rel="stylesheet" href="navBar.css">
+<body>
+   <div class="navBar">
+        <div class="leftBar">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="rightBar">
+
+        </div>
+   </div>
+   <div class="sideBar">
+
+   </div>
+
+   <div id="main">
+        <div class="container">
+            <div class="dashboard">
+                <div id="reportrange" class="datepick">
+                    <i class="fa fa-calendar"></i>&nbsp;
+                    <span></span> <i class="fa fa-caret-down"></i>
+                </div>
+            
+                <script type="text/javascript">
+                    $(function() {
+                    
+                        var start = moment().subtract(6, 'days');
+                        var end = moment();
+                    
+                        function cb(start, end) {
+                            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                        }
+                    
+                        $('#reportrange').daterangepicker({
+                            startDate: start,
+                            endDate: end,
+                            ranges: {
+                            'Today': [moment(), moment()],
+                            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                            'This Month': [moment().startOf('month'), moment().endOf('month')],
+                            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                            }
+                        }, cb);
+                    
+                        cb(start, end);
+                    
+                    });
+                </script>
+            </div>
+            <div class="card-container">
+                <div class="card"></div>
+                <div class="card" style="margin-left: 70px; margin-right: 70px;"></div>
+                <div class="card"></div>
+            </div>
+        </div>
+    
+
+        <div class="section">
+            <div class="recent-activity">
+                <div class="header-box">
+                    Recent Activity
+                </div>
+                <div class="body-box">
+                    <div class="entry">
+                        <div class="time">27 min</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Machine Stopped! Crusher blah blah blah.</div>
+                    </div>
+                    <div class="entry">
+                        <div class="time">40 min</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Screen stopped!</div>
+                    </div>
+                    <div class="entry">
+                        <div class="time">1 hr</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Power Outage!</div>
+                    </div>
+                    <div class="entry">
+                        <div class="time">2 hr</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Your weekly report has been generated!</div>
+                    </div>
+                    <div class="entry">
+                        <div class="time">1 day</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Crusher Stopped!</div>
+                    </div>
+                    <div class="entry">
+                        <div class="time">2 wks</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Crusher Stopped!</div>
+                    </div>
+                    <div class="entry">
+                        <div class="time">3 mths</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Crusher Stopped!</div>
+                    </div>
+                    <div class="entry">
+                        <div class="time">1 yr</div>
+                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
+                        <div class="alert">Crusher Stopped!</div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            <div class="recent-activity">
+                <div class="header-box">
+
+                </div>
+                <div class="body-box">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section2">
+            <canvas id="myChart"></canvas>
+            <script>
+                const xValues = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                const yValues = [5600, 4321, 543, 7654, 2345, 1234, 1345, 6543, 6432, 3452, 4536, 7643];
+                new Chart("myChart", {
+                    type: "line",
+                    data: {
+                        labels: xValues,
+                        datasets: [{ 
+                        data: yValues,
+                        borderColor: "red",
+                        fill: false
+                        }]
+                    },
+                    options: {
+                        legend: {display: false},
+                    }
+                });
+            </script>
+
+
+        </div>
+        
+   </div>
+   <script src="sideBar.js"></script>
+   
+
+</body>
+</html>

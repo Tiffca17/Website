@@ -1,0 +1,5 @@
+#17A2B8 - soft teal
+#A3D5E8 - light cyan
+#FF6F61 - coral
+#FF8C42 - burnt orange
+#faeca0 - pale yellow

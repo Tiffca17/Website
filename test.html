@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Report Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>My Chart Report</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <button id="generateReport">Generate Report</button>
+
+    <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    // const myChart = new Chart(ctx, {
+    //     type: 'line',
+    //     data: {
+    //         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    //         datasets: [{
+    //             label: 'Sales',
+    //             data: [12, 19, 3, 5, 2, 3],
+    //             borderColor: 'rgba(75, 192, 192, 1)',
+    //             borderWidth: 2,
+    //             tension: 0.4
+    //         }]
+    //     }
+    // });
+
+    document.getElementById('generateReport').addEventListener('click', () => {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+
+        // Add a title
+        pdf.setFontSize(20);
+        pdf.text('Sales Report', 10, 10);
+
+        // Add chart image
+        const chartImage = ctx.canvas.toDataURL('image/png');
+        pdf.addImage(chartImage, 'PNG', 10, 20, 180, 100);
+
+        // Add some text
+        pdf.setFontSize(12);
+        pdf.text('This report contains sales data for the first half of the year.', 10, 130);
+
+        // Save the PDF
+        pdf.save('report.pdf');
+    });
+    </script>
+</body>
+</html>

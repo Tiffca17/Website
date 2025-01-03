@@ -5,154 +5,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/e25e8fb234.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
-<link rel="stylesheet" href="navBar.css">
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/charts.css">
+<link rel="stylesheet" href="css/recent-activity.css">
+<link rel="stylesheet" href="css/bars.css">
+<link rel="stylesheet" href="css/top.css">
+
+
 <body>
-   <div class="navBar">
-        <div class="leftBar">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="rightBar">
 
-        </div>
-   </div>
    <div class="sideBar">
+        <div id="side-bar-top">
+
+        </div>
+
+        <div class="menu-item"> 
+            <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Overview
+        </div>
+
+        <div class="menu-item"> 
+            <i class="fa-solid fa-chart-line" style="margin-right: 10px;"></i> Activity
+        </div>
+
+        <div class="menu-item"> 
+            <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Home
+        </div>
 
    </div>
 
-   <div id="main">
-        <div class="container">
-            <div class="dashboard">
-                <div id="reportrange" class="datepick">
-                    <i class="fa fa-calendar"></i>&nbsp;
-                    <span></span> <i class="fa fa-caret-down"></i>
+        <div id="main">
+            <div class="navBar">
+
+                <div class="leftBar">
+                    <i class="fas fa-bars"></i>
                 </div>
-            
-                <script type="text/javascript">
-                    $(function() {
-                    
-                        var start = moment().subtract(6, 'days');
-                        var end = moment();
-                    
-                        function cb(start, end) {
-                            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                        }
-                    
-                        $('#reportrange').daterangepicker({
-                            startDate: start,
-                            endDate: end,
-                            ranges: {
-                            'Today': [moment(), moment()],
-                            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                            'This Month': [moment().startOf('month'), moment().endOf('month')],
-                            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                            }
-                        }, cb);
-                    
-                        cb(start, end);
-                    
-                    });
-                </script>
+
+                <div class="rightBar">
+
+                </div>
+
+        </div>
+
+        <div class="container">
+
+            <div class="dashboard">
+
+                <img src="logo.png" alt="" style="width: 500px;">
+
+                <div id="date-pick-holder">
+                    <div id="reportrange" class="datepick">
+                        <i class="fa fa-calendar"></i>&nbsp;
+                        <span style="margin-left: 5px; margin-right: 10px;"></span> <i class="fa fa-caret-down"></i>
+                    </div>
+    
+                    <script src="javascript/datepicker.js"></script>
+                </div>
+
+                
+
             </div>
+
             <div class="card-container">
-                <div class="card"></div>
-                <div class="card" style="margin-left: 70px; margin-right: 70px;"></div>
-                <div class="card"></div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-right-top">
+                            <h4>Relief Bush Totals</h4>
+                        </div>
+                        <div class="card-right-bottom">
+                            <h1>1542</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-right-top">
+                            <h4>Cedar Valley Totals</h4>
+                        </div>
+                        <div class="card-right-bottom">
+                            <h1>1542</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <div class="card-right">
+                        <div class="card-right-top">
+                            <h4>Black Heath Totals</h4>
+                        </div>
+                        <div class="card-right-bottom">
+                            <h1>1542</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <button id="generateReport">Generate Report</button>
+                </div>
+                <script src="javascript/generatePDF.js"></script>
+
             </div>
+
         </div>
     
 
-        <div class="section">
-            <div class="recent-activity">
-                <div class="header-box">
-                    Recent Activity
-                </div>
-                <div class="body-box">
-                    <div class="entry">
-                        <div class="time">27 min</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Machine Stopped! Crusher blah blah blah.</div>
-                    </div>
-                    <div class="entry">
-                        <div class="time">40 min</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Screen stopped!</div>
-                    </div>
-                    <div class="entry">
-                        <div class="time">1 hr</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Power Outage!</div>
-                    </div>
-                    <div class="entry">
-                        <div class="time">2 hr</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Your weekly report has been generated!</div>
-                    </div>
-                    <div class="entry">
-                        <div class="time">1 day</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Crusher Stopped!</div>
-                    </div>
-                    <div class="entry">
-                        <div class="time">2 wks</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Crusher Stopped!</div>
-                    </div>
-                    <div class="entry">
-                        <div class="time">3 mths</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Crusher Stopped!</div>
-                    </div>
-                    <div class="entry">
-                        <div class="time">1 yr</div>
-                        <div class="dot" style="margin-left: 20px; margin-right: 20px;"></div>
-                        <div class="alert">Crusher Stopped!</div>
+        <div class="body-section">
+
+            <div class="section">
+
+                <div class="section-bottom">
+
+                    <div class="recent-activity">
+
+                        <div class="header-box">
+                            Recent Activity
+                        </div>
+
+                        <div class="body-box">
+                            <div class="entry">
+                                <div class="time">27 min</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Machine Stopped! Crusher blah blah blah.</div>
+                            </div>
+                            <div class="entry">
+                                <div class="time">40 min</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Screen stopped!</div>
+                            </div>
+                            <div class="entry">
+                                <div class="time">1 hr</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Power Outage!</div>
+                            </div>
+                            <div class="entry">
+                                <div class="time">2 hr</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Your weekly report has been generated!</div>
+                            </div>
+                            <div class="entry">
+                                <div class="time">1 day</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Crusher Stopped!</div>
+                            </div>
+                            <div class="entry">
+                                <div class="time">2 wks</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Crusher Stopped!</div>
+                            </div>
+                            <div class="entry">
+                                <div class="time">3 mths</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Crusher Stopped!</div>
+                            </div>
+                            <div class="entry">
+                                <div class="time">1 yr</div>
+                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
+                                <div class="alert">Crusher Stopped!</div>
+                            </div>  
+                        </div>
                     </div>
 
-                    
+                    <div id="bar-chart-holder">
+                        <canvas id="barchart" style="width:100%;max-width:600px"></canvas>
+                        <script src="javascript/barChart.js"></script>
+                    </div>
                 </div>
+
+                <div id="chart-holder">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <script src="javascript/lineChart.js"></script>   
             </div>
-            <div class="recent-activity">
-                <div class="header-box">
+    
+            <div class="section2">
+                
+                <div id="pie-chart-holder">
+                    <h4>Stone Dust</h4>
+                    <canvas id="pieChart1"></canvas>
+                    <script src="javascript/pieChart1.js"></script>
 
-                </div>
-                <div class="body-box">
+                    <h4>3/4" Stone</h4>
+                    <canvas id="pieChart2"></canvas>
+                    <script src="javascript/pieChart2.js"></script>
 
-                </div>
+                    <h4>Chemical Grade Stone</h4>
+                    <canvas id="pieChart3"></canvas>
+                    <script src="javascript/pieChart3.js"></script>
+                </div>         
             </div>
         </div>
-
-        <div class="section2">
-            <canvas id="myChart"></canvas>
-            <script>
-                const xValues = ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                const yValues = [5600, 4321, 543, 7654, 2345, 1234, 1345, 6543, 6432, 3452, 4536, 7643];
-                new Chart("myChart", {
-                    type: "line",
-                    data: {
-                        labels: xValues,
-                        datasets: [{ 
-                        data: yValues,
-                        borderColor: "red",
-                        fill: false
-                        }]
-                    },
-                    options: {
-                        legend: {display: false},
-                    }
-                });
-            </script>
-
-
-        </div>
+        
         
    </div>
    <script src="sideBar.js"></script>

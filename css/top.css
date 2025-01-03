@@ -1,0 +1,85 @@
+.dashboard{
+    width: 100%;
+    display: flex;
+    background-image: linear-gradient(to right, #002767 , #134492, #2e5daa);
+    height: 300px;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: -75px;
+}
+
+.datepick{
+    background-color: white;
+    width: 315px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border-color: solid rgba(0, 0, 0, 0.3);
+    margin-right: 20px;
+}
+
+#date-pick-holder{
+    height: 210px;
+    display: flex;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.card-container{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* #edc85d */
+.card{
+    width: 20%;
+    display: flex;
+    background-image: linear-gradient(to right, #edc85d , #f5dd58, #fbe39b);
+    height: 120px;
+    border-color: solid rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-icon{
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.fa-chart-simple{
+    font-size: 70px;
+    color: #faeca0;
+}
+
+.card-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-right-top{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    color: rgb(141, 122, 14);
+}
+
+.card-right-bottom{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    color: rgb(104, 87, 2);
+}

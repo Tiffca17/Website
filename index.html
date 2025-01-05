@@ -79,7 +79,7 @@
                     <div id="section1-left">
                         <div class="card-container">
     
-                            <div class="card">
+                            <div class="card" style="background: linear-gradient(to right, #874fc4, #5588df);">
                                 <div class="card-icon">
                                     <i class="fa-solid fa-chart-simple"></i>
                                 </div>
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
             
-                            <div class="card">
+                            <div class="card" style="background: linear-gradient(to right, #edc85d, #fce7a8);">
                                 <div class="card-icon">
                                     <i class="fa-solid fa-chart-simple"></i>
                                 </div>
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
             
-                            <div class="card">
+                            <div class="card" style="background: linear-gradient(to right, #FF6F61, #ffc69f);">
                                 <div class="card-icon">
                                     <i class="fa-solid fa-chart-simple"></i>
                                 </div>
@@ -245,8 +245,8 @@
                                 </div>
                             </div>
         
-                            <div class="infoBox">
-                                <div class="topBox">
+                            <div id="infoBox">
+                                <div class="topBox" style="margin-bottom: 30px;">
                                     <div id="temp"></div>
                                     <div class="circle" onclick="circleClick(0)">Daily</div>
                                     <div class="circle" onclick="circleClick(1)">Weekly</div>
@@ -255,11 +255,38 @@
                                 </div>
                                 <div class="bottomBox">
                                     <div class="box fade">
-                                        <div class="boxInfo">
-                                            <div id="chart-display">
-                                                <canvas id="barchart"></canvas>
-                                            </div>
-                                            <script src="javascript/barChart.js"></script>
+                                        <div class="boxInfo" style="flex-direction: column; padding-left: 70px; padding-right: 70px;">
+                                            <div id="top">
+                                                <div id="title-holder">
+                                                    Total Material Produced
+                                                </div>
+                                                <div id="value-holder">
+                                                    2674 
+                                                </div>                    
+                                                <script src="javascript/barChart.js"></script>
+                                            </div>   
+                                            <div id="bottom">
+                                                <div id="left">
+                                                    <div id="bottom-titles">Production Rate</div>
+                                                    <div id="prod-rate-val">50 tonnes/hr</div>
+                                                </div>
+                                                <div id="right">
+                                                    <div class="type-columns">
+                                                        <div id="bottom-titles">Stone Dust</div>
+                                                        <div id="sd-val">456</div>
+                                                    </div>
+                                                    <div class="type-columns">
+                                                        <div id="bottom-titles">3/4" Stone</div>
+                                                        <div id="three-val">456</div>
+                                                    </div>
+                                                    <div class="type-columns">
+                                                        <div id="bottom-titles">CGS</div>
+                                                        <div id="cgs-val">456</div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            
+
                                         </div>
                                     </div>
                                     <div class="box fade">

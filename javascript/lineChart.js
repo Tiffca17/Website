@@ -1,76 +1,140 @@
-const xValues = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const yValues = [5600, 4321, 543, 7654, 2345, 1234, 1345, 6543, 6432, 3452, 4536, 7643];
-const yValuesBH = [578, 421, 5436, 8654, 6345, 3234, 4345, 2543, 2432, 1452, 6536, 5643];
-const yValuesCV = [4328, 4211, 7464, 854, 1245, 5434, 645, 7543, 4432, 152, 3336, 4643];
+document.addEventListener('DOMContentLoaded', () => {
+    // Update data every 5 seconds
+    setInterval(updateLineGraph, 1000);
+});
+
+// Initialize chart globally to update it dynamically later
+let chart;
 
 
-function gradient(colourStart){
-    const ctxLine = document.getElementById('myChart').getContext('2d');
-    const gradientLine1 = ctxLine.createLinearGradient(0, 0, 0, 400);
-    gradientLine1.addColorStop(0, colourStart); // Lighter shade
-    gradientLine1.addColorStop(1, 'rgba(30, 144, 255, 0)');   // Fade to transparent
-    return gradientLine1
+function updateLineGraph() {
+    // Fetch data from both endpoints asynchronously
+    Promise.all([
+        fetch('http://127.0.0.1:8000/relief-month-sum').then(response => response.json()),
+        fetch('http://127.0.0.1:8000/cv-month-sum').then(responsecv => responsecv.json()),
+        fetch('http://127.0.0.1:8000/bh-month-sum').then(responsebh => responsebh.json())
+    ])
+    .then(([data, datacv, databh]) => {
+        // Log the received data for debugging
+        console.log('Fetched Data for Relief Bush:', data);
+        console.log('Fetched Data for Cedar Valley:', datacv);
+        console.log('Fetched Data for Cedar Valley:', databh);
+
+        // Now that both datasets are fetched, update the graph
+        graph_plot(data, datacv, databh);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
 }
 
-new Chart("myChart", {
-    type: "line",
-    data: {
-        labels: xValues,
-        datasets: [{ 
-            label: "Relief Bush (Tonnes)",
-            data: yValues,
-            borderColor: "#103c74",
-            backgroundColor: gradient("#103c74"),
-            tension: 0.5,
-            fill: true
-        }, {
-            label: "Black Heath (Tonnes)",
-            data: yValuesBH,
-            borderColor: "#FF6F61",
-            backgroundColor: gradient("#FF6F61"),
-            tension: 0.5,
-            fill: true
-        },
-        {
-            label: "Cedar Valley (Tonnes)",
-            data: yValuesCV,
-            borderColor: "#edc85d",
-            backgroundColor: gradient("#edc85d"),
-            tension: 0.5,
-            fill: true
-        }]
-    },
-    options: {
-        legend: {display: false},
-        maintainAspectRatio: false,
-        plugins: {
-            tooltip: {
-                enabled: true,
-                backgroundColor: "white",
-                titleColor: "#042a0b",
-                bodyColor: "#042a0b",
-                titleFont: { weight: 'bold' },
-                padding: 10,
-                cornerRadius: 10,
-                borderColor: "#cccccc",
-                borderWidth: "1",
-                xAlign: "left"
-            },
-            legend: {
-                display: false // Hides the legend
-            }
-        },
-        scales: {
-            x: {
-                grid: {
-                    display: false // Removes the grid lines for the x-axis
+function gradient(ctx, colorStart) {
+    const gradientLine1 = ctx.createLinearGradient(0, 0, 0, 400);
+    gradientLine1.addColorStop(0, colorStart); // Lighter shade
+    gradientLine1.addColorStop(1, 'rgba(30, 144, 255, 0)'); // Fade to transparent
+    return gradientLine1;
+}
+
+function graph_plot(returned_data, returned_datacv, returned_databh) {
+    const allMonths = Array.from(new Set([
+        ...returned_data.map(faculty => faculty.month_name),
+        ...returned_datacv.map(faculty => faculty.month_name),
+        ...returned_databh.map(faculty => faculty.month_name)
+    ]));
+
+    const sortedMonths = allMonths.sort((a, b) => {
+        const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        return monthOrder.indexOf(a) - monthOrder.indexOf(b);
+    });
+
+    const yValues = sortedMonths.map(month => {
+        const entry = returned_data.find(faculty => faculty.month_name === month);
+        return entry ? entry.sum : 0;
+    });
+
+    const yValuescv = sortedMonths.map(month => {
+        const entry = returned_datacv.find(faculty => faculty.month_name === month);
+        return entry ? entry.sum : 0;
+    });
+
+    const yValuesbh = sortedMonths.map(month => {
+        const entry = returned_databh.find(faculty => faculty.month_name === month);
+        return entry ? entry.sum : 0;
+    });
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    // Check if the chart already exists, and update it
+    if (chart) {
+        chart.data.labels = sortedMonths; // Update x-axis labels
+        chart.data.datasets[0].data = yValues; // Update dataset
+        chart.data.datasets[1].data = yValuescv;
+        chart.data.datasets[2].data = yValuesbh;
+        chart.update(); // Update the chart
+    } else {
+        // Create a new chart if it doesn't exist
+        chart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: sortedMonths,
+                datasets: [{
+                    label: "Relief Bush (Tonnes)",
+                    data: yValues,
+                    borderColor: "#103c74",
+                    backgroundColor: gradient(ctx, "#103c74"),
+                    tension: 0.5,
+                    fill: true,
+                },
+                {
+                    label: "Cedar Valley (Tonnes)",
+                    data: yValuescv,
+                    borderColor: "#edc85d",
+                    backgroundColor: gradient(ctx, "#edc85d"),
+                    tension: 0.5,
+                    fill: true,
+                },
+                {
+                    label: "Black Heath (Tonnes)",
+                    data: yValuesbh,
+                    borderColor: "#FF6F61",
+                    backgroundColor: gradient(ctx, "#FF6F61"),
+                    tension: 0.5,
+                    fill: true
                 }
+            ]
             },
-            y: {
-                grid: {
-                    display: false // Removes the grid lines for the y-axis
-                }
-            }
-        }
+            options: {
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        enabled: true,
+                        backgroundColor: "white",
+                        titleColor: "#042a0b",
+                        bodyColor: "#042a0b",
+                        titleFont: { weight: 'bold' },
+                        padding: 10,
+                        cornerRadius: 10,
+                        borderColor: "#cccccc",
+                        borderWidth: 1,
+                        xAlign: "left",
+                    },
+                    legend: {
+                        display: false, // Hides the legend
+                    },
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false, // Removes grid lines for x-axis
+                        },
+                    },
+                    y: {
+                        grid: {
+                            display: false, // Removes grid lines for y-axis
+                        },
+                    },
+                },
+            },
+        });
     }
-});
+}

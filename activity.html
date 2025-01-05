@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/e25e8fb234.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://kit.fontawesome.com/e25e8fb234.js" crossorigin="anonymous"></script>
+
+</head>
+
+<link rel="stylesheet" href="css/bars.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/variable-graph.css">
+<link rel="stylesheet" href="css/charts.css">
+
+<body>
+    <div class="sideBar">
+        <div id="side-bar-top">
+            <i class="fa-solid fa-xmark"></i> Close
+        </div>
+
+        <div class="menu-item"> 
+            <i class="fa-solid fa-house" style="margin-right: 10px;"></i> <a href="index.html">Overview</a>
+        </div>
+
+        <div class="menu-item"> 
+            <i class="fa-solid fa-chart-line" style="margin-right: 10px;"></i> <a href="activity.html">Activity</a>
+        </div>
+
+        <div class="menu-item"> 
+            <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Home
+        </div>
+
+    </div>
+
+    <div id="main">
+        <div class="navBar">
+
+            <div class="leftBar">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="rightBar">
+
+            </div>
+
+        </div>
+        <div id="section1">
+            <div class="infoBox">
+                <div class="topBox">
+                    <div id="temp"></div>
+                    <div class="circle" onclick="circleClick(0)">Daily</div>
+                    <div class="circle" onclick="circleClick(1)">Weekly</div>
+                    <div class="circle" onclick="circleClick(2)">Monthly</div>
+                    <div class="circle" onclick="circleClick(3)">Yearly</div>
+                </div>
+                <div class="bottomBox">
+                    <div class="box fade">
+                        <div class="boxInfo">
+                            <div id="chart-display">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <script src="javascript/lineChart.js"></script> 
+                        </div>
+                    </div>
+                    <div class="box fade">
+                        <div class="boxInfo">
+                            <div id="chart-holder">
+                                <canvas id="pieChart1"></canvas>
+                            </div>
+                            <script src="javascript/pieChart1.js"></script> 
+                        </div>
+                    </div>
+                    <div class="box fade">
+                        <div class="boxInfo">
+                            <div id="chart-holder">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <!-- <script src="javascript/lineChart.js"></script>  -->
+                        </div>
+                    </div>
+                    <div class="box fade">
+                        <div class="boxInfo">
+                            <div id="chart-holder">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <!-- <script src="javascript/lineChart.js"></script>  -->
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <script src="javascript/variableGraph.js"></script>
+        </div>
+        
+
+    </div>
+    <script src="javascript/sideBar.js"></script>
+</body>
+</html>

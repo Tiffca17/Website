@@ -1,5 +1,5 @@
-const xVal = ["Italy", "France", "Spain", "USA", "Argentina"];
-const yVal = [55, 49, 44, 24, 15];
+const xVal = ["Cedar Valley", "Black Heath", "Relief Bush"];
+const yVal = [55, 49, 44];
 
 const ctx4 = document.getElementById("barchart").getContext("2d");
 const gradient4 = ctx4.createLinearGradient(0, 0, ctx4.canvas.width, 0); // Horizontal gradient

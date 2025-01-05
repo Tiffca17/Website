@@ -21,204 +21,301 @@
 <link rel="stylesheet" href="css/recent-activity.css">
 <link rel="stylesheet" href="css/bars.css">
 <link rel="stylesheet" href="css/top.css">
+<link rel="stylesheet" href="css/variable-graph.css">
 
 
 <body>
 
-   <div class="sideBar">
-        <div id="side-bar-top">
-
+    <div id="all">
+        <div class="sideBar">
+            <div id="side-bar-top">
+                <i class="fa-solid fa-xmark"></i> Close
+            </div>
+    
+            <div class="menu-item"> 
+                <i class="fa-solid fa-house" style="margin-right: 10px;"></i> <a href="index.html">Dashboard</a>
+            </div>
+    
+            <div class="menu-item"> 
+                <i class="fa-solid fa-chart-line" style="margin-right: 10px;"></i> <a href="activity.html">Activity</a>
+            </div>
+    
+            <div class="menu-item"> 
+                <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Home
+            </div>
         </div>
-
-        <div class="menu-item"> 
-            <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Overview
-        </div>
-
-        <div class="menu-item"> 
-            <i class="fa-solid fa-chart-line" style="margin-right: 10px;"></i> Activity
-        </div>
-
-        <div class="menu-item"> 
-            <i class="fa-solid fa-house" style="margin-right: 10px;"></i> Home
-        </div>
-
-   </div>
-
+    
         <div id="main">
             <div class="navBar">
-
+    
                 <div class="leftBar">
                     <i class="fas fa-bars"></i>
                 </div>
-
+    
                 <div class="rightBar">
-
+                    <h1 style="margin-bottom: 0;"">Dashboard</h1>
+                    <h4 style="margin-top: 0;"">January 4, 2025</h4>
                 </div>
-
-        </div>
-
-        <div class="container">
-
-            <div class="dashboard">
-
-                <img src="logo.png" alt="" style="width: 500px;">
-
-                <div id="date-pick-holder">
-                    <div id="reportrange" class="datepick">
-                        <i class="fa fa-calendar"></i>&nbsp;
-                        <span style="margin-left: 5px; margin-right: 10px;"></span> <i class="fa fa-caret-down"></i>
-                    </div>
     
-                    <script src="javascript/datepicker.js"></script>
-                </div>
-
-                
-
-            </div>
-
-            <div class="card-container">
-
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-chart-simple"></i>
-                    </div>
-                    <div class="card-right">
-                        <div class="card-right-top">
-                            <h4>Relief Bush Totals</h4>
-                        </div>
-                        <div class="card-right-bottom">
-                            <h1>1542</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-chart-simple"></i>
-                    </div>
-                    <div class="card-right">
-                        <div class="card-right-top">
-                            <h4>Cedar Valley Totals</h4>
-                        </div>
-                        <div class="card-right-bottom">
-                            <h1>1542</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-chart-simple"></i>
-                    </div>
-                    <div class="card-right">
-                        <div class="card-right-top">
-                            <h4>Black Heath Totals</h4>
-                        </div>
-                        <div class="card-right-bottom">
-                            <h1>1542</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <button id="generateReport">Generate Report</button>
-                </div>
-                <script src="javascript/generatePDF.js"></script>
-
-            </div>
-
-        </div>
-    
-
-        <div class="body-section">
-
-            <div class="section">
-
-                <div class="section-bottom">
-
-                    <div class="recent-activity">
-
-                        <div class="header-box">
-                            Recent Activity
-                        </div>
-
-                        <div class="body-box">
-                            <div class="entry">
-                                <div class="time">27 min</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Machine Stopped! Crusher blah blah blah.</div>
-                            </div>
-                            <div class="entry">
-                                <div class="time">40 min</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Screen stopped!</div>
-                            </div>
-                            <div class="entry">
-                                <div class="time">1 hr</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Power Outage!</div>
-                            </div>
-                            <div class="entry">
-                                <div class="time">2 hr</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Your weekly report has been generated!</div>
-                            </div>
-                            <div class="entry">
-                                <div class="time">1 day</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Crusher Stopped!</div>
-                            </div>
-                            <div class="entry">
-                                <div class="time">2 wks</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Crusher Stopped!</div>
-                            </div>
-                            <div class="entry">
-                                <div class="time">3 mths</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Crusher Stopped!</div>
-                            </div>
-                            <div class="entry">
-                                <div class="time">1 yr</div>
-                                <div class="dot" style="margin-left: 5px; margin-right: 12px;"></div>
-                                <div class="alert">Crusher Stopped!</div>
-                            </div>  
-                        </div>
-                    </div>
-
-                    <div id="bar-chart-holder">
-                        <canvas id="barchart" style="width:100%;max-width:600px"></canvas>
-                        <script src="javascript/barChart.js"></script>
-                    </div>
-                </div>
-
-                <div id="chart-holder">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <script src="javascript/lineChart.js"></script>   
             </div>
     
-            <div class="section2">
-                
-                <div id="pie-chart-holder">
-                    <h4>Stone Dust</h4>
-                    <canvas id="pieChart1"></canvas>
-                    <script src="javascript/pieChart1.js"></script>
-
-                    <h4>3/4" Stone</h4>
-                    <canvas id="pieChart2"></canvas>
-                    <script src="javascript/pieChart2.js"></script>
-
-                    <h4>Chemical Grade Stone</h4>
-                    <canvas id="pieChart3"></canvas>
-                    <script src="javascript/pieChart3.js"></script>
-                </div>         
-            </div>
-        </div>
+            <div class="container">
+    
+                <!-- <div class="dashboard">
+    
+                    <img src="logo.png" alt="" style="width: 500px;">
+    
+                    <div id="date-pick-holder">
+                        <div id="reportrange" class="datepick">
+                            <i class="fa fa-calendar"></i>&nbsp;
+                            <span style="margin-left: 5px; margin-right: 10px;"></span> <i class="fa fa-caret-down"></i>
+                        </div>
         
+                        <script src="javascript/datepicker.js"></script>
+                    </div>
+                </div> -->
+                <div id="section1">
+    
+                    <div id="section1-left">
+                        <div class="card-container">
+    
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                </div>
+                                <div class="card-right">
+                                    <div class="card-right-top">
+                                        <h4>Relief Bush Totals</h4>
+                                    </div>
+                                    <div class="card-right-bottom">
+                                        <h1>1542</h1>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                </div>
+                                <div class="card-right">
+                                    <div class="card-right-top">
+                                        <h4>Cedar Valley Totals</h4>
+                                    </div>
+                                    <div class="card-right-bottom">
+                                        <h1>1542</h1>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                </div>
+                                <div class="card-right">
+                                    <div class="card-right-top">
+                                        <h4>Black Heath Totals</h4>
+                                    </div>
+                                    <div class="card-right-bottom">
+                                        <h1>1542</h1>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="card">
+                                <button id="generateReport">Generate Report</button>
+                            </div>
+                            <script src="javascript/generatePDF.js"></script>
+                            
+                        </div>
+    
+                        <div class="section1-left-bottom">
         
-   </div>
-   <script src="sideBar.js"></script>
+                            <div class="recent-activity">
+        
+                                <div class="header-box">
+                                    Recent Activity
+                                </div>
+        
+                                <div class="body-box">
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            27 min
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            40 min
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            1 hr
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            2 hr
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            1 day
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            2 wks
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            3 mths
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="time">
+                                            <div id="space-holder"></div>
+                                            1 yr
+                                        </div>
+                                        <div class="circle-holder">
+                                            <div class="dot"><i class="fa-solid fa-bell"></i></div>
+                                        </div>
+                                        <div class="alert">
+                                            <div class="alert-top">Machine Stopped</div>
+                                            <div class="alert-bottom">Crusher at Relief Bush</div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+        
+                            <div class="infoBox">
+                                <div class="topBox">
+                                    <div id="temp"></div>
+                                    <div class="circle" onclick="circleClick(0)">Daily</div>
+                                    <div class="circle" onclick="circleClick(1)">Weekly</div>
+                                    <div class="circle" onclick="circleClick(2)">Monthly</div>
+                                    <div class="circle" onclick="circleClick(3)">Yearly</div>
+                                </div>
+                                <div class="bottomBox">
+                                    <div class="box fade">
+                                        <div class="boxInfo">
+                                            <div id="chart-display">
+                                                <canvas id="barchart"></canvas>
+                                            </div>
+                                            <script src="javascript/barChart.js"></script>
+                                        </div>
+                                    </div>
+                                    <div class="box fade">
+                                        <div class="boxInfo">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="box fade">
+                                        <div class="boxInfo">
+                                            <div id="chart-display">
+                                                <canvas id="myChart"></canvas>
+                                            </div>
+                                            <script src="javascript/lineChart.js"></script> 
+                                        </div>
+                                    </div>
+                                    <div class="box fade">
+                                        <div class="boxInfo">
+                                            <div id="chart-holder">
+                                                <canvas id="myChart"></canvas>
+                                            </div>
+                                            <!-- <script src="javascript/lineChart.js"></script>  -->
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <script src="javascript/variableGraph.js"></script>
+    
+                        </div>
+    
+                    </div>
+    
+                    <div id="section1-right">
+                        <div id="pie-chart-holder">
+                            <h4>Stone Dust</h4>
+                            <canvas id="pieChart1"></canvas>
+                            <script src="javascript/pieChart1.js"></script>
+            
+                            <h4>3/4" Stone</h4>
+                            <canvas id="pieChart2"></canvas>
+                            <script src="javascript/pieChart2.js"></script>
+            
+                            <h4>Chemical Grade Stone</h4>
+                            <canvas id="pieChart3"></canvas>
+                            <script src="javascript/pieChart3.js"></script>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    
+       <script src="javascript/sideBar.js"></script>
+    </div>
+
+    
    
 
 </body>

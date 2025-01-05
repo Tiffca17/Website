@@ -44,6 +44,7 @@
 
 #barchart{
     max-height: 90%;
+    max-width: 30%;
 }
 
 #bar-chart-holder{

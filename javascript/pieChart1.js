@@ -5,7 +5,7 @@ gradient1.addColorStop(0.5, "#134492"); // Middle color
 gradient1.addColorStop(1, "#2e5daa"); // End color
 
 const xValues1 = ["Stone Dust"];
-const yValues1 = [55, 180];
+const yValues1 = [55,180];
 const barColors1 = [gradient1, "#f1f3f9"]; // Use gradients here
 
 new Chart("pieChart1", {
@@ -18,10 +18,12 @@ new Chart("pieChart1", {
         }]
     },
     options: {
+        rotation: -90,
+        circumference: 180,
         plugins: {
             legend: {
                 display: false // Hides the legend
             }
-        }
+        }    
     }
 });

@@ -1,27 +1,59 @@
+let selected = "plant"; // Set default value to 'plant'
+
+// Ensure the event listener is only added once, not each time `updateLineGraph` is called
 document.addEventListener('DOMContentLoaded', () => {
+    // Initial call to render the graph with the default "plant" option
+    updateLineGraph();
+
     // Update data every 5 seconds
-    setInterval(updateLineGraph, 1000);
+    setInterval(updateLineGraph, 10000);
+
+    // Listen for changes in the radio buttons
+    document.getElementById('month-options').addEventListener('change', (event) => {
+        if (event.target.name === 'option') {
+            selected = event.target.value;
+            console.log(selected); // Logs the selected value
+            updateLineGraph(); // Update graph when radio button changes
+        }
+    });
 });
 
 // Initialize chart globally to update it dynamically later
-let chart;
+let chart =null;
 
 
 function updateLineGraph() {
-    // Fetch data from both endpoints asynchronously
-    Promise.all([
-        fetch('http://127.0.0.1:8000/relief-month-sum').then(response => response.json()),
-        fetch('http://127.0.0.1:8000/cv-month-sum').then(responsecv => responsecv.json()),
-        fetch('http://127.0.0.1:8000/bh-month-sum').then(responsebh => responsebh.json())
-    ])
-    .then(([data, datacv, databh]) => {
-        // Log the received data for debugging
-        console.log('Fetched Data for Relief Bush:', data);
-        console.log('Fetched Data for Cedar Valley:', datacv);
-        console.log('Fetched Data for Cedar Valley:', databh);
+    console.log(selected);
+    str1 = 'http://127.0.0.1:8000/month-sum/';
+    str2 = selected;
+    url = str1+str2;
 
-        // Now that both datasets are fetched, update the graph
-        graph_plot(data, datacv, databh);
+    fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+        // Log the received data for debugging
+        console.log('Fetched Data:', data);
+
+        let data1;
+        let data2;
+        let data3;
+        let data4; 
+
+        if (selected == "plant"){
+            data1 = data.filter(item => item.plant === 'Relief Bush');
+            data2 = data.filter(item => item.plant === 'Cedar Valley');
+            data3 = data.filter(item => item.plant === 'Black Heath');
+            graph_plot(0,data1,data2,data3,null);
+        }
+        else{
+            data1 = data.filter(item => item.material === '3-4 Stone');
+            data2 = data.filter(item => item.material === 'CGS');
+            data3 = data.filter(item => item.material === 'raw');
+            data4 = data.filter(item => item.material === 'Stone Dust');
+            graph_plot(1,data1, data2, data3, data4);
+
+            console.log(data1);
+        };
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -35,11 +67,12 @@ function gradient(ctx, colorStart) {
     return gradientLine1;
 }
 
-function graph_plot(returned_data, returned_datacv, returned_databh) {
+function graph_plot(x, data1, data2, data3, data4){
     const allMonths = Array.from(new Set([
-        ...returned_data.map(faculty => faculty.month_name),
-        ...returned_datacv.map(faculty => faculty.month_name),
-        ...returned_databh.map(faculty => faculty.month_name)
+        ...data1.map(faculty => faculty.month_name),
+        ...data2.map(faculty => faculty.month_name),
+        ...data3.map(faculty => faculty.month_name),
+        ...data4 ? data4.map(item => item.month_name) : []
     ]));
 
     const sortedMonths = allMonths.sort((a, b) => {
@@ -47,61 +80,67 @@ function graph_plot(returned_data, returned_datacv, returned_databh) {
         return monthOrder.indexOf(a) - monthOrder.indexOf(b);
     });
 
-    const yValues = sortedMonths.map(month => {
-        const entry = returned_data.find(faculty => faculty.month_name === month);
+    const yValues1 = sortedMonths.map(month => {
+        const entry = data1.find(faculty => faculty.month_name === month);
         return entry ? entry.sum : 0;
     });
 
-    const yValuescv = sortedMonths.map(month => {
-        const entry = returned_datacv.find(faculty => faculty.month_name === month);
+    const yValues2 = sortedMonths.map(month => {
+        const entry = data2.find(faculty => faculty.month_name === month);
         return entry ? entry.sum : 0;
     });
 
-    const yValuesbh = sortedMonths.map(month => {
-        const entry = returned_databh.find(faculty => faculty.month_name === month);
+    const yValues3 = sortedMonths.map(month => {
+        const entry = data3.find(faculty => faculty.month_name === month);
         return entry ? entry.sum : 0;
     });
+
+    const yValues4 = data4 ? sortedMonths.map(month => {
+        const entry = data4.find(item => item.month_name === month);
+        return entry ? entry.sum : 0; // If entry is null or undefined, return 0
+    }) : [];
 
     const ctx = document.getElementById('myChart').getContext('2d');
 
-    // Check if the chart already exists, and update it
-    if (chart) {
-        chart.data.labels = sortedMonths; // Update x-axis labels
-        chart.data.datasets[0].data = yValues; // Update dataset
-        chart.data.datasets[1].data = yValuescv;
-        chart.data.datasets[2].data = yValuesbh;
-        chart.update(); // Update the chart
+    let labels;
+    if (selected === "plant") {
+        labels = ["Relief Bush", "Cedar Valley", "Black Heath"];
     } else {
-        // Create a new chart if it doesn't exist
+        labels = ["Stone Dust", "3-4 Stone", "CGS", "Raw"]; // Example labels for materials
+    }
+
+    if (!chart) {
+        // Create the chart only once
         chart = new Chart(ctx, {
             type: "line",
             data: {
                 labels: sortedMonths,
-                datasets: [{
-                    label: "Relief Bush (Tonnes)",
-                    data: yValues,
-                    borderColor: "#103c74",
-                    backgroundColor: gradient(ctx, "#103c74"),
-                    tension: 0.5,
-                    fill: true,
-                },
-                {
-                    label: "Cedar Valley (Tonnes)",
-                    data: yValuescv,
-                    borderColor: "#edc85d",
-                    backgroundColor: gradient(ctx, "#edc85d"),
-                    tension: 0.5,
-                    fill: true,
-                },
-                {
-                    label: "Black Heath (Tonnes)",
-                    data: yValuesbh,
-                    borderColor: "#FF6F61",
-                    backgroundColor: gradient(ctx, "#FF6F61"),
-                    tension: 0.5,
-                    fill: true
-                }
-            ]
+                datasets: [
+                    {
+                        label: labels[0],
+                        data: yValues1,
+                        borderColor: "#103c74",
+                        backgroundColor: gradient(ctx, "#103c74"),
+                        tension: 0.5,
+                        fill: true
+                    },
+                    {
+                        label: labels[1],
+                        data: yValues2,
+                        borderColor: "#edc85d",
+                        backgroundColor: gradient(ctx, "#edc85d"),
+                        tension: 0.5,
+                        fill: true
+                    },
+                    {
+                        label: labels[2],
+                        data: yValues3,
+                        borderColor: "#FF6F61",
+                        backgroundColor: gradient(ctx, "#FF6F61"),
+                        tension: 0.5,
+                        fill: true
+                    }
+                ]
             },
             options: {
                 maintainAspectRatio: false,
@@ -136,5 +175,55 @@ function graph_plot(returned_data, returned_datacv, returned_databh) {
                 },
             },
         });
+    } else {
+        // Update existing chart's labels
+        chart.data.labels = sortedMonths;
+    
+        // Update each dataset individually with new data
+        chart.data.datasets[0].data = yValues1;
+        chart.data.datasets[0].label = labels[0];
+    
+        chart.data.datasets[1].data = yValues2;
+        chart.data.datasets[1].label = labels[1];
+    
+        chart.data.datasets[2].data = yValues3;
+        chart.data.datasets[2].label = labels[2];
+    
+        if (x === 1 && labels.length > 3) {
+            // Check if the fourth dataset is required, and add or update it
+            if (chart.data.datasets.length < 4) {
+                chart.data.datasets.push({
+                    label: labels[3],
+                    data: yValues4,
+                    borderColor: "red",
+                    backgroundColor: gradient(ctx, "red"),
+                    tension: 0.5,
+                    fill: true
+                });
+            } else {
+                chart.data.datasets[3].data = yValues4;
+                chart.data.datasets[3].label = labels[3];
+            }
+        }
+
+        if (x===0){
+            removeDatasetByLabel(chart, "Raw");
+        }
+    
+        // Only update the chart with new data without re-rendering it
+        chart.update();
+    }
+    
+}
+
+// Example: Remove a dataset by label
+function removeDatasetByLabel(chart, label) {
+    const index = chart.data.datasets.findIndex(dataset => dataset.label === label);
+    if (index !== -1) {
+        chart.data.datasets.splice(index, 1); // Remove the dataset at the found index
+        chart.update(); // Re-render the chart to reflect the change
     }
 }
+
+
+

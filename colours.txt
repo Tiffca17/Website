@@ -3,3 +3,5 @@
 #FF6F61 - coral
 #FF8C42 - burnt orange
 #faeca0 - pale yellow
+linear-gradient(to right, #002767 , #5e92e6)
+linear-gradient(to right, #FF6F61, #ffc69f)

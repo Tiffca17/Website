@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSocketData();
 });
 
-function updateSocketData() {
+function fetchData() {
     fetch('http://127.0.0.1:8000/faculty')
         .then(response => response.json())
         .then(data => {

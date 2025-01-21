@@ -68,16 +68,10 @@
 #section1-left{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 75%;
     padding-left: 25px;
 }
 
-#section1-right{
-    display: flex;
-    justify-content: flex-end;
-    width: 20%;
-    padding-right: 25px;
-}
 
 .section2{
     height: 830px;
@@ -98,9 +92,21 @@
     width: 100%;
 }
 
+.message-holder{
+    display: flex;
+    flex-direction: column;
+}
+
 html,body{
     margin: 0;
     padding: 0;
     font-family: 'Arimo';font-size: 15px;
     background-color: #f1f3f9;
 }
+
+#section1-left-last{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+

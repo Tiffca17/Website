@@ -12,11 +12,11 @@ import json
 
 
 conn = psycopg2.connect(
-    database = "engineering",
+    database = "engineering_1534",
     # host = "192.168.102.222",
-    host = "localhost",
+    host = "dpg-cv9d5gogph6c73al232g-a",
     user = "admin",
-    password = "admin123",
+    password = "mhPkWtynMyygNk6K5MtmchezyjI0fDJE",
     port = "5432"
 )
 

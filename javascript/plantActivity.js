@@ -40,7 +40,7 @@ function fetchData(){
 
     // console.log(crusherCircles);
 
-    fetch("https://129.213.108.16:8000/status")
+    fetch("http://129.213.108.16:8000/status")
     .then(response => response.json())
     .then((data) => {
         // Log the received data for debugging

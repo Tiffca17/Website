@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchData(){
          
-    fetch('https://129.213.108.16:8000/recent-activity')
+    fetch('http://129.213.108.16:8000/recent-activity')
     .then(response => response.json())
     .then((data) => {
         table(data);

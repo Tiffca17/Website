@@ -605,6 +605,6 @@ async def get_status():
         conn.rollback()  # Rollback any failed transaction
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("app:app",host="0.0.0.0")
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("app:app",host="0.0.0.0")

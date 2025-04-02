@@ -6,15 +6,15 @@ from datetime import datetime, timedelta, date, time
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 from starlette.requests import Request
 from starlette.responses import JSONResponse
-import psycopg2
-from psycopg2.extras import RealDictCursor
+import psycopg
+from psycopg.extras import RealDictCursor
 import json
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-conn = psycopg2.connect( dbname=os.getenv("DB_NAME"),
+conn = psycopg.connect( dbname=os.getenv("DB_NAME"),
                         host= os.getenv("DB_HOST"),
                         user=os.getenv("DB_USER"),
                         password=os.getenv("DB_PASS"),

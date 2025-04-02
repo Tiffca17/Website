@@ -76,7 +76,7 @@
         function fetchData(page,filter,startDate, endDate, search){
 
             
-            url = 'https://website-k5ix.onrender.com/production-history/' + page + "/" + filter + "/" + startDate + "/" + endDate;
+            url = 'https://129.213.108.16:8000/production-history/' + page + "/" + filter + "/" + startDate + "/" + endDate;
             console.log(url);
             if (search!=""){
                 url = url + "/" + search;

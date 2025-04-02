@@ -24,7 +24,7 @@ let monthChart =null;
 
 function updateLineGraph() {
     console.log(selected);
-    str1 = 'https://website-k5ix.onrender.com/month-sum/';
+    str1 = 'https://129.213.108.16:8000/month-sum/';
     str2 = selected;
     url = str1+str2;
 

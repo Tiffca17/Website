@@ -7,7 +7,7 @@ from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 import psycopg
-from psycopg.extras import RealDictCursor
+# from psycopg.extras import RealDictCursor
 import json
 from dotenv import load_dotenv
 import os

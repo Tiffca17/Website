@@ -40,7 +40,7 @@ function fetchData(){
 
     // console.log(crusherCircles);
 
-    fetch("http://127.0.0.1:8000/status")
+    fetch("https://website-k5ix.onrender.com/status")
     .then(response => response.json())
     .then((data) => {
         // Log the received data for debugging
@@ -69,4 +69,44 @@ function fetchData(){
     });
 }
 
+fetchData();
 setInterval(fetchData, 5000);
+
+
+if (data.machine == "Crusher"){
+    if(data.code == "CS"){
+        if(data.plant == "Relief Bush"){
+            crusherCircles[0].style.backgroundColor = "red";
+            crusherMessages[0].style.backgroundColor = "red";
+            crusherMessages[0].innerHTML = "Stopped";
+        };
+        if(data.plant == "Cedar Valley"){
+            crusherCircles[1].style.backgroundColor = "red";
+            crusherMessages[1].style.backgroundColor = "red";
+            crusherMessages[1].innerHTML = "Stopped";
+        };
+        if(data.plant == "Black Heath"){
+            crusherCircles[2].style.backgroundColor = "red";
+            crusherMessages[2].style.backgroundColor = "red";
+            crusherMessages[2].innerHTML = "Stopped";
+        }
+    }
+    else{
+        if(data.plant == "Relief Bush"){
+            crusherCircles[0].style.backgroundColor = "green";
+            crusherMessages[0].style.backgroundColor = "green";
+            crusherMessages[0].innerHTML = "Running";
+        };
+        if(data.plant == "Cedar Valley"){
+            crusherCircles[1].style.backgroundColor = "green";
+            crusherMessages[1].style.backgroundColor = "green";
+            crusherMessages[1].innerHTML = "Running";
+        };
+        if(data.plant == "Black Heath"){
+            crusherCircles[2].style.backgroundColor = "green";
+            crusherMessages[2].style.backgroundColor = "green";
+            crusherMessages[2].innerHTML = "Running";
+        }
+    }
+
+}

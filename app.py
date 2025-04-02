@@ -9,28 +9,27 @@ from starlette.responses import JSONResponse
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import json
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
-conn = psycopg2.connect(
-    database = "engineering",
-    host = "localhost",
-    user = "admin",
-    password = "admin123",
-    port = "5432"
+conn = psycopg2.connect( dbname=os.getenv("DB_NAME"),
+                        host= os.getenv("DB_HOST"),
+                        user=os.getenv("DB_USER"),
+                        password=os.getenv("DB_PASS"),
+                        port=("5432")
 )
 
 conf = ConnectionConfig(
-    MAIL_USERNAME="tiffanyca1710@gmail.com",  
-    MAIL_PASSWORD="wnbe euil rwfb mdpl",  
-    MAIL_SERVER="smtp.gmail.com", 
-    MAIL_PORT=587,  
-    MAIL_STARTTLS=True,  
-    MAIL_SSL_TLS=False,  
-    MAIL_FROM="tiffanyca1710@gmail.com",  
-    # MAIL_DEBUG=1, 
-    # SUPPRESS_SEND=0,  
-    USE_CREDENTIALS=True,  
-    # VALIDATE_CERTS=True  
+    MAIL_USERNAME=os.getenv("MAIL_USERNAME"),
+    MAIL_PASSWORD=os.getenv("MAIL_PASSWORD"),   
+    MAIL_SERVER=os.getenv("MAIL_SERVER"),
+    MAIL_PORT=int(os.getenv("MAIL_PORT")),
+    MAIL_STARTTLS=True,
+    MAIL_SSL_TLS=False,
+    MAIL_FROM=os.getenv("MAIL_FROM"),
+    USE_CREDENTIALS=True,
 )
 
 
@@ -605,3 +604,7 @@ async def get_status():
         print(f"Error: {e}")
         conn.rollback()  # Rollback any failed transaction
         raise HTTPException(status_code=500, detail="Internal Server Error")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app:app",host="0.0.0.0")

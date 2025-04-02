@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchData() {
-    fetch('http://127.0.0.1:8000/faculty')
+    fetch('https://website-k5ix.onrender.com/faculty')
         .then(response => response.json())
         .then(data => {
             //const latestEntry = data[data.length - 1]; // Get the last entry

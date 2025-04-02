@@ -1,6 +1,6 @@
 let selected = "relief-bush";
 let selectedRadio = document.getElementById(selected);
-selectedRadio.style.borderBottom = "3px solid #fcef39";
+selectedRadio.style.backgroundColor = "#f1f3f9";
 
 const buttons = document.querySelectorAll('input[name="summary-filter"]');
     buttons.forEach(radio => {
@@ -11,12 +11,12 @@ const buttons = document.querySelectorAll('input[name="summary-filter"]');
             buttons.forEach(btn => {
                 const btnElement = document.getElementById(btn.value);
                 if (btnElement) {
-                    btnElement.style.borderBottom = "none"; // Reset border
+                    btnElement.style.backgroundColor = "white"; // Reset border
                 }
             });
 
             selectedRadio = document.getElementById(selected);
-            selectedRadio.style.borderBottom = "3px solid #fcef39";
+            selectedRadio.style.backgroundColor = "#f1f3f9";
             
             // ['relief-bush','black-heath', 'cedar-valley'].forEach(filter => {
             //     document.getElementById(`${filter}-sort`).style.display = filter === selected ? 'inline' : 'none';

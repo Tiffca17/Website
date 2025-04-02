@@ -50,7 +50,7 @@ let chart;
 
 function fetchData(startDate, endDate) {
     console.log(selected);
-    const url = 'http://127.0.0.1:8000/week-sum/' + startDate + "/" + endDate + "/" + selected;
+    const url = 'https://website-k5ix.onrender.com/week-sum/' + startDate + "/" + endDate + "/" + selected;
     // const str2 = startDate;
     // const str3 = endDate;
     // const str4 = selected;

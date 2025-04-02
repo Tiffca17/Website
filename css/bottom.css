@@ -60,18 +60,26 @@
 }
 
 #download-submit{
-    width: 90%;
+    width: 45%;
     height: 30px;
     background-color: #103c74;
     color: white;
     border: none;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+}
+
+#download-submit:hover{
+    cursor: pointer;
 }
 
 #report-submit{
-    width: 90%;
+    width: 45%;
     height: 30px;
     background-color: #103c74;
     color: white;
     border: none;
+}
+
+#report-submit:hover{
+    cursor: pointer;
 }

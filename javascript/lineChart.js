@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Initialize chart globally to update it dynamically later
-let chart =null;
+let monthChart =null;
 
 
 function updateLineGraph() {
     console.log(selected);
-    str1 = 'http://127.0.0.1:8000/month-sum/';
+    str1 = 'https://website-k5ix.onrender.com/month-sum/';
     str2 = selected;
     url = str1+str2;
 
@@ -109,9 +109,9 @@ function graph_plot(x, data1, data2, data3, data4){
         labels = ["Stone Dust", "3-4 Stone", "CGS", "Raw"]; // Example labels for materials
     }
 
-    if (!chart) {
+    if (!monthChart) {
         // Create the chart only once
-        chart = new Chart(ctx, {
+        monthChart = new Chart(ctx, {
             type: "line",
             data: {
                 labels: sortedMonths,
@@ -177,22 +177,22 @@ function graph_plot(x, data1, data2, data3, data4){
         });
     } else {
         // Update existing chart's labels
-        chart.data.labels = sortedMonths;
+        monthChart.data.labels = sortedMonths;
     
         // Update each dataset individually with new data
-        chart.data.datasets[0].data = yValues1;
-        chart.data.datasets[0].label = labels[0];
+        monthChart.data.datasets[0].data = yValues1;
+        monthChart.data.datasets[0].label = labels[0];
     
-        chart.data.datasets[1].data = yValues2;
-        chart.data.datasets[1].label = labels[1];
+        monthChart.data.datasets[1].data = yValues2;
+        monthChart.data.datasets[1].label = labels[1];
     
-        chart.data.datasets[2].data = yValues3;
-        chart.data.datasets[2].label = labels[2];
+        monthChart.data.datasets[2].data = yValues3;
+        monthChart.data.datasets[2].label = labels[2];
     
         if (x === 1 && labels.length > 3) {
             // Check if the fourth dataset is required, and add or update it
-            if (chart.data.datasets.length < 4) {
-                chart.data.datasets.push({
+            if (monthChart.data.datasets.length < 4) {
+                monthChart.data.datasets.push({
                     label: labels[3],
                     data: yValues4,
                     borderColor: "red",
@@ -201,27 +201,27 @@ function graph_plot(x, data1, data2, data3, data4){
                     fill: true
                 });
             } else {
-                chart.data.datasets[3].data = yValues4;
-                chart.data.datasets[3].label = labels[3];
+                monthChart.data.datasets[3].data = yValues4;
+                monthChart.data.datasets[3].label = labels[3];
             }
         }
 
         if (x===0){
-            removeDatasetByLabel(chart, "Raw");
+            removeDatasetByLabel(monthChart, "Raw");
         }
     
         // Only update the chart with new data without re-rendering it
-        chart.update();
+        monthChart.update();
     }
     
 }
 
 // Example: Remove a dataset by label
-function removeDatasetByLabel(chart, label) {
-    const index = chart.data.datasets.findIndex(dataset => dataset.label === label);
+function removeDatasetByLabel(monthChart, label) {
+    const index = monthChart.data.datasets.findIndex(dataset => dataset.label === label);
     if (index !== -1) {
-        chart.data.datasets.splice(index, 1); // Remove the dataset at the found index
-        chart.update(); // Re-render the chart to reflect the change
+        monthChart.data.datasets.splice(index, 1); // Remove the dataset at the found index
+        monthChart.update(); // Re-render the chart to reflect the change
     }
 }
 

@@ -33,7 +33,7 @@ const sidebar = document.querySelector('.sideBar');
 const content = document.getElementById('main');
 const closeIcon = document.querySelector('.fa-xmark');
 const menuIconHolder = document.querySelector('.leftBar');
-const overlay = document.querySelector('#overlay');
+// const overlay = document.querySelector('#overlay');
 
 // Add click event listener to the menu icon
 menuIcon.addEventListener('click', () => {
@@ -42,18 +42,20 @@ menuIcon.addEventListener('click', () => {
 
     if (sidebar.classList.contains('active')) {
         menuIcon.style.display = 'none';
-        // content.style.marginLeft = '150px'; // Match sidebar width
-        overlay.style.display = 'block';
+        content.style.marginLeft = '150px'; // Match sidebar width
+        // overlay.style.display = 'block';
         menuIconHolder.style.marginRight = '-35px';
 
     } else {
-        overlay.style.display = 'none';
+        // overlay.style.display = 'none';
+        // content.style.marginLeft = '0px'; // Match sidebar width
     }
 });
 
 closeIcon.addEventListener('click', () => {
     menuIcon.style.display = 'block';
     sidebar.classList.remove('active');
-    overlay.style.display = 'none';
+    content.style.marginLeft = '0px';
+    // overlay.style.display = 'none';
     menuIconHolder.style.marginRight = '0px';
 });

@@ -4,14 +4,14 @@ a {
 }
 
 .navBar{
-    height: 125px;
+    height: 100px;
     width: 100%;
     /* background-color: #201d1d; */
     /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); */
     /* margin-bottom: -70px; */
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
 
     /* position: fixed; */

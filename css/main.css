@@ -41,7 +41,7 @@
 #main{
     /* width: 100%; */
     transition: margin-left 0.3s ease; /* Smooth transition for margin-left */
-    background-color: #f1f3f9;
+    background-color: #e5e8ef;
 }
 
 .body-section{
@@ -68,7 +68,7 @@
 #section1-left{
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 80%;
     padding-left: 25px;
 }
 
@@ -101,7 +101,8 @@ html,body{
     margin: 0;
     padding: 0;
     font-family: 'Arimo';font-size: 15px;
-    background-color: #f1f3f9;
+    background-color:#e5e8ef;
+    ;
 }
 
 #section1-left-last{

@@ -50,14 +50,25 @@
     
         <div id="main">
             <div class="navBar">
-    
-                <div class="leftBar">
-                    <i class="fas fa-bars"></i>
+                <div style="display: flex;">
+                    <div class="leftBar">
+                        <i class="fas fa-bars"></i>
+                    </div>
+        
+                    <div class="rightBar">
+                        <h1 style="margin-bottom: 0;"">Dashboard</h1>
+                        <h4 style="margin-top: 0;"">January 4, 2025</h4>
+                    </div>
                 </div>
     
-                <div class="rightBar">
-                    <h1 style="margin-bottom: 0;"">Dashboard</h1>
-                    <h4 style="margin-top: 0;"">January 4, 2025</h4>
+                
+
+                <div style="height: 75px; display: flex; margin-right: 25px;align-items: center; width: 190px; justify-content: space-between;">
+                    <i class="fa-regular fa-bell" style="color: black; font-size: 24px;"></i>
+                    <div style="background-color: #103c74; height: 40px; width: 40px; border-radius: 50%; margin-left: 20px; display: flex; justify-content: center; align-items: center;">
+                        <img src="logo.png" alt="" width="35px" height="20px">
+                    </div>
+                    <h4 style="padding: 0; margin: 0;">Lydford Mining</h4>
                 </div>
     
             </div>
@@ -494,45 +505,7 @@
                         </div>
 
                         <div id="section1-left-last">
-                            <div id="gen-report">
-                                <h3>Generate Report</h3>
-                                <form action="" id="report-form">
-                                    <div id="gen-report-top">
-                                        <button id="gen-report-button">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </button>
-                                        <div id="filter-holder">
-                                            <label for="day">
-                                                <input type="radio" name="filter" id="day">
-                                                Daily
-                                            </label>
-                                            <label for="week">
-                                                <input type="radio" name="filter" id="week">
-                                                Weekly
-                                            </label>
-                                            <label for="month">
-                                                <input type="radio" name="filter" id="month">
-                                                Monthly
-                                            </label>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                    <div style="display: flex; flex-direction: column; align-items: center;">
-                                        <button type="submit" id="download-submit">
-                                            <i class="fa-solid fa-download" style="margin-right: 10px;"></i>
-                                            Download PDF
-                                        </button>  
-                                        <button type="submit" id="report-submit">
-                                            <i class="fa-solid fa-inbox" style="margin-right: 10px;"></i>
-                                            Send to Email
-                                        </button>                                     
-                                        <input type="email" id="email">
-                                        
-                                    </div> 
-                                </form>
-                            </div>
-                            <script src="javascript/generatePDF.js"></script>
+                            
                             <div id="summary-div">
                                 <div class="summary-displays"></div>
                                 <div class="summary-displays"></div>
@@ -547,11 +520,45 @@
                     <div id="section1-right">
                         
                         <div id="section1-right-top">
-                            <div id="downtime">
-
-                            </div>
-
-                            <div id="runtime">
+                                <div id="gen-report">
+                                    <h3>Generate Report</h3>
+                                    <form action="" id="report-form">
+                                        <div id="gen-report-top">
+                                            <button id="gen-report-button">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
+                                            <div id="filter-holder">
+                                                <label for="day">
+                                                    <input type="radio" name="filter" id="day">
+                                                    Daily
+                                                </label>
+                                                <label for="week">
+                                                    <input type="radio" name="filter" id="week">
+                                                    Weekly
+                                                </label>
+                                                <label for="month">
+                                                    <input type="radio" name="filter" id="month">
+                                                    Monthly
+                                                </label>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div style="display: flex; flex-direction: column; align-items: center;">
+                                            <button type="submit" id="download-submit">
+                                                <i class="fa-solid fa-download" style="margin-right: 10px;"></i>
+                                                Download PDF
+                                            </button>  
+                                            <button type="submit" id="report-submit">
+                                                <i class="fa-solid fa-inbox" style="margin-right: 10px;"></i>
+                                                Send to Email
+                                            </button>                                     
+                                            <!-- <input type="email" id="email" style="width: 70%;"> -->
+                                            
+                                        </div> 
+                                    </form>
+                                </div>
+                                <script src="javascript/generatePDF.js"></script>
 
                             </div>
                             

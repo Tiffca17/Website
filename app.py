@@ -93,23 +93,80 @@ class Activity(BaseModel):
 #     code: str
 #     code: str
 
-async def send_mail(email: EmailSchema, location:str, string: str):
+async def send_mail(email: EmailSchema, location:str, date: datetime, asset:str):
     template = f"""
             <html>
-            <body style="background-color:blue">
-            
-    
-    <p>     <br> ALERT!!!
-            <br> Issue at {location}
-            <br>Message: {string}</p>
-    
-    
+                <head>
+                <meta charset="UTF-8">
+                <title>System Alert Notification</title>
+                <style>
+                    body {{
+                    font-family: Arial, sans-serif;
+                    background-color: #f5f6fa;
+                    padding: 20px;
+                    }}
+                    .container {{
+                    max-width: 600px;
+                    margin: auto;
+                    background-color: #ffffff;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                    padding: 30px;
+                    }}
+                    .header {{
+                    text-align: center;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #eee;
+                    }}
+                    .header h2 {{
+                    margin: 0;
+                    color: #e84118;
+                    }}
+                    .content {{
+                    padding: 20px 0;
+                    }}
+                    .footer {{
+                    text-align: center;
+                    font-size: 12px;
+                    color: #999;
+                    padding-top: 20px;
+                    border-top: 1px solid #eee;
+                    }}
+                    .button {{
+                    display: inline-block;
+                    padding: 10px 20px;
+                    margin-top: 20px;
+                    background-color: #e84118;
+                    color: #ffffff;
+                    text-decoration: none;
+                    border-radius: 4px;
+                    }}
+                </style>
+            </head>
+            <body>
+            <div class="container">
+                <div class="header">
+                <h2>🚨 System Alert: Machine has stopped!</h2>
+                </div>
+                <div class="content">
+                <p>Dear Operator,</p>
+                <p><strong>Alert Time:</strong> {date}</p>
+                <p><strong>Location:</strong> {location}</p>
+                <p><strong>Affected Machine:</strong> {asset}</p>
+                <p><strong>Status:</strong> <span style="color: red;">Stopped</span></p>
+                <p>The control system has automatically shut down associated equipment to prevent further issues. Please inspect the affected machinery as soon as possible.</p>
+                <a href="http://129.213.108.16/Website/" class="button">View Dashboard</a>
+                </div>
+                <div class="footer">
+                This is an automated alert from the Central Monitoring System – Lydford Mining.
+                </div>
+            </div>
             </body>
-            </html>
+        </html>
             """
     
     message = MessageSchema(
-       subject="API EMAIL TESTING",
+       subject="Lydford Mining Alerts",
        recipients=email.get("email"),  # List of recipients, as many as you can pass  
        body=template,
        subtype="html"
@@ -553,7 +610,10 @@ async def post_activity(activity:Activity):
         
         cursor.execute(query)
         conn.commit()
-        await send_mail({"email":["tiffanycampbell1710@gmail.com"]},plant, message)
+
+        now = datetime.now()
+        formatted_time = now.strftime("%B %d, %Y – %I:%M %p")
+        await send_mail({"email":["dejeanaeb@gmail.com"]},plant, formatted_time,machine)
 
         cursor.close()
 

@@ -613,7 +613,7 @@ async def post_activity(activity:Activity):
 
         now = datetime.now()
         formatted_time = now.strftime("%B %d, %Y – %I:%M %p")
-        await send_mail({"email":["dejeanaeb@gmail.com"]},plant, formatted_time,machine)
+        await send_mail({"email":["tiffanycampbell1710@gmail.com"]},plant, formatted_time,machine)
 
         cursor.close()
 

@@ -101,7 +101,7 @@ function emailPDF(){
     formData.append("file", pdfBlob, "report.pdf");  // Add the Blob with filename
     formData.append('email', email);
 
-    fetch('http://129.213.108.16:8000/send-mail', {
+    fetch('https://api.p-tea.com/send-mail', {
         method: 'POST',
         body: formData
     })

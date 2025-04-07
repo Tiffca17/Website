@@ -40,7 +40,7 @@ function fetchData(){
 
     // console.log(crusherCircles);
 
-    fetch("http://129.213.108.16:8000/status")
+    fetch("https://api.p-tea.com/status")
     .then(response => response.json())
     .then((data) => {
         // Log the received data for debugging

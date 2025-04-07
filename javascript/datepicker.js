@@ -50,7 +50,7 @@ let chart;
 
 function fetchData(startDate, endDate) {
     console.log(selected);
-    const url = 'http://129.213.108.16:8000/week-sum/' + startDate + "/" + endDate + "/" + selected;
+    const url = 'https://api.p-tea.com/week-sum/' + startDate + "/" + endDate + "/" + selected;
     // const str2 = startDate;
     // const str3 = endDate;
     // const str4 = selected;

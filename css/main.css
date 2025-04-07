@@ -123,5 +123,31 @@ html,body{
     #section1{
         flex-direction: column;
     }
+    #section1{
+        flex-direction: column;
+    }
+    .section1-left-bottom{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    #infoBox{
+        width: 95%;
+        /* align-items: center; */
+        /* justify-content: center; */
+    }
+    #section1-left{
+        padding: 0;
+        width: 100%;
+        margin-top: 15px;
+    }
+    #section1-left-bottom-left{
+        width: 100%;
+        justify-content: center;
+        margin-top: 15PX;
+    }
+    .recent-activity{
+        width: 80%;
+    }
   }
 

@@ -133,6 +133,7 @@ html,body{
     }
     #infoBox{
         width: 95%;
+        /* height: 300px; */
         /* align-items: center; */
         /* justify-content: center; */
     }
@@ -148,6 +149,54 @@ html,body{
     }
     .recent-activity{
         width: 80%;
+    }
+    body{
+        font-size: 12px;
+    }
+    .fa-bars{
+        margin-right: 0;
+    }
+    .topBox{
+        height: 40px;
+        margin-bottom: 0px;
+        justify-content: center;
+    }
+    .circle{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    #temp{
+        display: none;
+    }
+    .bottomBox{
+        height: 275px;
+    }
+    #title-holder{
+        font-size: 50px;
+    }
+    #value-holder{
+        font-size: 70px;
+    }
+    #bottom-titles{
+        font-size: 15px;
+        width: 25%;
+    }
+    
+    #prod-rate-val{
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #sd-val{
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #three-val{
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #cgs-val{
+        font-size: 15px;
+        font-weight: bold;
     }
   }
 

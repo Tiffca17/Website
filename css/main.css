@@ -199,7 +199,7 @@ html,body{
         font-weight: bold;
     }
     #chart-display{
-        height: 180px;
+        height: 200px;
     }
     #week-options{
         /* flex-direction: column; */

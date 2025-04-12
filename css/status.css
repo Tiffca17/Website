@@ -28,7 +28,7 @@
     margin-right: 5px;
 }
 
-.crusher-status-message{
+#crusher-status-message{
     color: rgb(208, 16, 16);
     width: 60px;
     font-size: 10px;
@@ -50,7 +50,23 @@
     margin-right: 5px;
 }
 
-.screen-status-message{
+
+
+#screen-status-message{
+    color: rgb(208, 16, 16);
+    width: 60px;
+    font-size: 10px;
+    height: 25px;
+    background-color: rgb(250, 140, 140);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    margin-left: 10px;
+    /* font-weight: 600; */
+}
+
+#conveyor-status-message{
     color: rgb(208, 16, 16);
     width: 60px;
     font-size: 10px;
@@ -92,10 +108,26 @@ svg{
 .tooltip {
     position: absolute;
     /* display: none; */
+    opacity: 0;
     background: white;
     padding: 5px;
     border-radius: 5px;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
     font-size: 12px;
     white-space: nowrap;
+    transition: opacity 0.3s ease;
+  }
+
+  #crusher:hover + #crusherTooltip{
+    /* display: block; */
+    opacity: 1;
+  }
+
+  #screen:hover + #screenTooltip{
+    /* display: block; */
+    opacity: 1;
+  }
+
+  .conveyors:hover + #conveyorTooltip{
+    opacity: 1;
   }

@@ -304,22 +304,70 @@
                                 <!-- dotted rectangle -->
                                 <!-- <rect x="80" y="280" width="60" height="40" stroke="black" fill="none" stroke-dasharray="5,5" /> -->
                             
-                                <rect x="5%" y="30%" width="15%" height="40%"  fill="#e5e8ef" />
-                                
-                                <rect x="21%" y="40%" width="10%" height="15%"  fill="#e5e8ef" />
-                            
-                                <rect x="32%" y="38%" width="15%" height="20%"  fill="#e5e8ef" />
-                            
-                                <rect x="48%" y="38%" width="8%" height="20%"  fill="#e5e8ef" />
+                                <rect x="5%" y="30%" width="15%" height="40%"  fill="#e5e8ef" id="crusher"/>
 
-                                <rect x="57%" y="30%" width="15%" height="40%"  fill="#e5e8ef" />
+                                <foreignObject class="tooltip" id="crusherTooltip" x="8%" y="60%" width="125" height="40">
+                                    <table class="status-table">
+                                        <tbody>
+                                            <tr class="status">
+                                                <td class="status-machine-name">Crusher</td>
+                                                <td>
+                                                    <div id="crusher-status-message">
+                                                      
+                                                        Stopped
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </foreignObject>
+                                
+                                <rect x="21%" y="40%" width="10%" height="15%"  fill="#e5e8ef" class="conveyors"/>
+                            
+                                <rect x="32%" y="38%" width="15%" height="20%"  fill="#e5e8ef" class="conveyors"/>
+                            
+                                <rect x="48%" y="38%" width="8%" height="20%"  fill="#e5e8ef" class="conveyors"/>
+
+                                <foreignObject class="tooltip" id="conveyorTooltip" x="30%" y="10%" width="125" height="40">
+                                    <table class="status-table">
+                                        <tbody>
+                                            <tr class="status">
+                                                <td class="status-machine-name">Conveyors</td>
+                                                <td>
+                                                    <div id="conveyor-status-message">
+                                                      
+                                                        Stopped
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </foreignObject>
+
+                                <rect x="57%" y="30%" width="15%" height="40%"  fill="#e5e8ef" id="screen"/>
+
+                                <foreignObject class="tooltip" id="screenTooltip" x="73%" y="35%" width="125" height="40">
+                                    <table class="status-table">
+                                        <tbody>
+                                            <tr class="status">
+                                                <td class="status-machine-name">Screen</td>
+                                                <td>
+                                                    <div id="screen-status-message">
+                                                      
+                                                        Stopped
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </foreignObject>
                             
                                 <!-- Inner dashed box -->
-                                <line x1="60%" y1="30%" x2="60%" y2="1%" style="stroke:#e5e8ef;stroke-width:5%"></line>
+                                <line x1="60%" y1="30%" x2="60%" y2="1%" style="stroke:#e5e8ef;stroke-width:5%" class="conveyorLines"></line>
                             
-                                <line x1="70%" y1="35%" x2="85%" y2="10%" style="stroke:#e5e8ef;stroke-width:5%"></line>
+                                <line x1="70%" y1="35%" x2="85%" y2="10%" style="stroke:#e5e8ef;stroke-width:5%" class="conveyorLines"></line>
                             
-                                <line x1="70%" y1="65%" x2="85%" y2="90%" style="stroke:#e5e8ef;stroke-width:5%"></line>
+                                <line x1="70%" y1="65%" x2="85%" y2="90%" style="stroke:#e5e8ef;stroke-width:5%" class="conveyorLines"></line>
                             
                                 
                               </svg>

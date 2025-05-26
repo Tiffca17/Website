@@ -148,7 +148,7 @@ td{
 .button-header {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #f1f3f9;
+    /* background-color: #f1f3f9; */
     color: #103c74;
     font-size: 16px;
     text-align: center;

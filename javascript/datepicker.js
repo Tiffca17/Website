@@ -16,7 +16,7 @@ $(function() {
         // Whenever the range is changed by the user
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         fetchData(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
-    });
+    });b
 
     // Set initial date range
     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));

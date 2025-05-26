@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     fetchData();
+    setInterval(fetchData, 10000);
 
 });
 

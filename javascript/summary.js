@@ -1,12 +1,12 @@
-let selected = "relief-bush";
-let selectedRadio = document.getElementById(selected);
+let option = "relief-bush";
+let selectedRadio = document.getElementById(option);
 selectedRadio.style.backgroundColor = "#f1f3f9";
 
 const buttons = document.querySelectorAll('input[name="summary-filter"]');
     buttons.forEach(radio => {
         radio.addEventListener('change', (event) => {
-            selected = event.target.value;  // Get the value of the selected radio button
-            console.log(selected);  // Logs the selected value
+            option = event.target.value;  // Get the value of the selected radio button
+            console.log(option);  // Logs the selected value
             
             buttons.forEach(btn => {
                 const btnElement = document.getElementById(btn.value);
@@ -15,7 +15,7 @@ const buttons = document.querySelectorAll('input[name="summary-filter"]');
                 }
             });
 
-            selectedRadio = document.getElementById(selected);
+            selectedRadio = document.getElementById(option);
             selectedRadio.style.backgroundColor = "#f1f3f9";
             
             // ['relief-bush','black-heath', 'cedar-valley'].forEach(filter => {

@@ -4,6 +4,7 @@ let selected = "plant"; // Set default value to 'plant'
 document.addEventListener('DOMContentLoaded', () => {
     // Initial call to render the graph with the default "plant" option
     updateLineGraph();
+    
 
     // Update data every 5 seconds
     setInterval(updateLineGraph, 10000);
@@ -24,6 +25,7 @@ let monthChart =null;
 
 function updateLineGraph() {
     console.log(selected);
+    console.log("This is running");
     str1 = 'https://api.p-tea.com/month-sum/';
     str2 = selected;
     url = str1+str2;

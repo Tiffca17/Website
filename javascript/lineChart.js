@@ -71,34 +71,34 @@ function gradient(ctx, colorStart) {
 
 function graph_plot(x, data1, data2, data3, data4){
     const allMonths = Array.from(new Set([
-        ...data1.map(faculty => faculty.month_name),
-        ...data2.map(faculty => faculty.month_name),
-        ...data3.map(faculty => faculty.month_name),
-        ...data4 ? data4.map(item => item.month_name) : []
+        ...data1.map(faculty => faculty.month_name.trim()),
+        ...data2.map(faculty => faculty.month_name.trim()),
+        ...data3.map(faculty => faculty.month_name.trim()),
+        ...data4 ? data4.map(item => item.month_name.trim()) : []
     ]));
 
     const sortedMonths = allMonths.sort((a, b) => {
-        const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const monthOrder = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         return monthOrder.indexOf(a) - monthOrder.indexOf(b);
     });
 
     const yValues1 = sortedMonths.map(month => {
-        const entry = data1.find(faculty => faculty.month_name === month);
+        const entry = data1.find(faculty => faculty.month_name.trim() === month.trim());
         return entry ? entry.sum : 0;
     });
 
     const yValues2 = sortedMonths.map(month => {
-        const entry = data2.find(faculty => faculty.month_name === month);
+        const entry = data2.find(faculty => faculty.month_name.trim() === month.trim());
         return entry ? entry.sum : 0;
     });
 
     const yValues3 = sortedMonths.map(month => {
-        const entry = data3.find(faculty => faculty.month_name === month);
+        const entry = data3.find(faculty => faculty.month_name.trim() === month.trim());
         return entry ? entry.sum : 0;
     });
 
     const yValues4 = data4 ? sortedMonths.map(month => {
-        const entry = data4.find(item => item.month_name === month);
+        const entry = data4.find(item => item.month_name.trim() === month.trim());
         return entry ? entry.sum : 0; // If entry is null or undefined, return 0
     }) : [];
 
